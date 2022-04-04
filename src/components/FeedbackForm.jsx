@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Card from "./shared/Card";
 import RatingSelect from "./RatingSelect";
 import Button from "./shared/Button";
+import FeedbackContext from "../context/FeedbackContext";
 
-function FeedbackForm({ handleAdd }) {
+function FeedbackForm() {
   const [text, setText] = useState("");
   const [rating, setRating] = useState(10);
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState("");
+
+  const { addFeedback } = useContext(FeedbackContext);
 
   // This "{ target: { value } }" destructures the target value out of the event
   const handleTextChange = ({ target: { value } }) => {
@@ -22,7 +25,6 @@ function FeedbackForm({ handleAdd }) {
       setMessage(null);
     }
     setText(value);
-    //console.log(text.trim());
   };
 
   const handleSubmit = (e) => {
@@ -31,8 +33,13 @@ function FeedbackForm({ handleAdd }) {
       const newFeedback = {
         text,
         rating,
+        approved: false,
+        approvalText: "Not Approved",
       };
-      handleAdd(newFeedback);
+      addFeedback(newFeedback);
+      window.alert(
+        "Thank you for submitting feedback! It will be displayed once approved by an administrator."
+      );
       setText("");
     }
   };

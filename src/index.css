@@ -133,7 +133,9 @@ input:focus {
 }
 
 .close,
-.edit {
+.edit,
+.approve,
+.disapprove {
   position: absolute;
   top: 10px;
   right: 20px;
@@ -143,7 +145,24 @@ input:focus {
 }
 
 .edit {
+  right: 80px;
+}
+
+.approve {
+  right: 60px;
+}
+
+.disapprove {
   right: 40px;
+}
+
+.approve-text {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 14px;
 }
 
 .btn {
