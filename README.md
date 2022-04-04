@@ -14,6 +14,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+### `npm run server`
+
+Runs the JSON-Server mock backend. This is requred for the frontend to work properly. Run this command in a separate terminal window.
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
