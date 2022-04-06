@@ -64,9 +64,13 @@ export const FeedbackProvider = ({ children }) => {
     });
     const updatedItem = await response.json();
     //console.log("Updated Item:", updatedItem);
-    const oldItems = feedback.filter((item) => item.id !== id);
+    //const oldItems = feedback.filter((item) => item.id !== id);
     //console.log("Old Items:", oldItems);
-    setFeedback([updatedItem, ...oldItems]);
+    setFeedback(
+      feedback.map((item) =>
+        item.id === id ? { ...item, ...updatedItem } : item
+      )
+    );
   };
 
   // Disapprove feedback
@@ -85,9 +89,13 @@ export const FeedbackProvider = ({ children }) => {
     });
     const updatedItem = await response.json();
     //console.log("Updated Item:", updatedItem);
-    const oldItems = feedback.filter((item) => item.id !== id);
+    //const oldItems = feedback.filter((item) => item.id !== id);
     //console.log("Old Items:", oldItems);
-    setFeedback([updatedItem, ...oldItems]);
+    setFeedback(
+      feedback.map((item) =>
+        item.id === id ? { ...item, ...updatedItem } : item
+      )
+    );
   };
 
   return (
