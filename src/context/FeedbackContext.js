@@ -6,6 +6,10 @@ const FeedbackContext = createContext();
 export const FeedbackProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [feedback, setFeedback] = useState([]);
+  const [feedbackEdit, setFeedbackEdit] = useState({
+    item: {},
+    edit: false,
+  });
 
   useEffect(() => {
     fetchFeedback();
@@ -46,6 +50,30 @@ export const FeedbackProvider = ({ children }) => {
     const data = await response.json();
     setFeedback([data, ...feedback]);
     //console.log("from addFeedback", feedback);
+  };
+
+  // Update feedback item
+  const updateFeedback = async (id, updatedItem) => {
+    const response = await fetch(`/feedback/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedItem),
+    });
+
+    const data = await response.json();
+    setFeedback(
+      feedback.map((item) => (item.id === id ? { ...item, ...data } : item))
+    );
+  };
+
+  // Set item to be updated
+  const editFeedback = (item) => {
+    setFeedbackEdit({
+      item,
+      edit: true,
+    });
   };
 
   // Approve feedback
@@ -95,8 +123,11 @@ export const FeedbackProvider = ({ children }) => {
       value={{
         feedback,
         isLoading,
+        feedbackEdit,
         deleteFeedback,
         addFeedback,
+        editFeedback,
+        updateFeedback,
         approveFeedback,
         disapproveFeedback,
       }}
