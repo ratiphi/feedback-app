@@ -7,6 +7,7 @@ import FeedbackForm from "./components/FeedbackForm";
 //import FeedbackData from "./data/FeedbackData";
 import AboutIconLink from "./components/AboutIconLink";
 import AboutPage from "./pages/AboutPage";
+import NotFound from "./pages/NotFound";
 import { FeedbackProvider } from "./context/FeedbackContext";
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
                 </>
               }
             />
+            <Route path="/*" element={<NotFound />} />
           </Routes>
           <AboutIconLink />
         </div>
