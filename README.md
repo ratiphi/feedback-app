@@ -20,6 +20,8 @@ Runs the JSON-Server mock backend. This is requred for the frontend to work prop
 
 ## Admin Console
 
+Before submitted feedback will be displayed in the main list, each individual feedback must be approved by an administrator.
 To access the admin console, navigate to the "/supersecretpagethatnoonewilleverfind" path in the browser page running the app in development mode.
+Click the thumbs up icon to approve, the thumbs down icon is disapprove, and the X icon to delete a feedback.
 
 This does not use authenication of any kind and is NOT secure. It is not intended for production use and should only be left in place for development purposes.
