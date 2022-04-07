@@ -8,7 +8,9 @@ import FeedbackContext from "../context/FeedbackContext";
 function FeedbackItem({ item }) {
   const location = useLocation();
   const path = location.pathname;
-  const [display] = useState(path !== "/" ? true : false);
+  const [display] = useState(
+    path === "/supersecretpagethatnoonewilleverfind" ? true : false
+  );
   const { approveFeedback, disapproveFeedback, deleteFeedback } =
     useContext(FeedbackContext);
   return (
