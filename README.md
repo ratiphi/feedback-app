@@ -18,6 +18,10 @@ You may also see any lint errors in the console.
 
 Runs the JSON-Server mock backend. This is requred for the frontend to work properly. Run this command in a separate terminal window.
 
+### `npm run dev`
+
+Runs both the 'npm start' and 'npm run server' commands together using the Concurrently package. Use this if you want to run the frontend and mock backend together in one terminal window.
+
 ## Admin Console
 
 Before submitted feedback will be displayed in the main list, each individual feedback must be approved by an administrator.
