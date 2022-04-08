@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Card from "./shared/Card";
 import RatingSelect from "./RatingSelect";
 import Button from "./shared/Button";
@@ -10,7 +10,16 @@ function FeedbackForm() {
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState("");
 
-  const { addFeedback } = useContext(FeedbackContext);
+  const { addFeedback, feedbackEdit, updateFeedback } =
+    useContext(FeedbackContext);
+
+  useEffect(() => {
+    if (feedbackEdit.edit === true) {
+      setBtnDisabled(false);
+      setText(feedbackEdit.item.text);
+      setRating(feedbackEdit.item.rating);
+    }
+  }, [feedbackEdit]);
 
   // This "{ target: { value } }" destructures the target value out of the event
   const handleTextChange = ({ target: { value } }) => {
@@ -36,7 +45,13 @@ function FeedbackForm() {
         approved: false,
         approvalText: "Not Approved",
       };
-      addFeedback(newFeedback);
+
+      if (feedbackEdit.edit === true) {
+        updateFeedback(feedbackEdit.item.id, newFeedback);
+      } else {
+        addFeedback(newFeedback);
+      }
+
       window.alert(
         "Thank you for submitting feedback! It will be displayed once approved by an administrator."
       );

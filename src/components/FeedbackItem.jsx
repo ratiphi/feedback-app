@@ -1,4 +1,4 @@
-import { FaTimes, FaThumbsUp, FaThumbsDown } from "react-icons/fa";
+import { FaTimes, FaThumbsUp, FaThumbsDown, FaEdit } from "react-icons/fa";
 import { useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -11,8 +11,9 @@ function FeedbackItem({ item }) {
   const [display] = useState(
     path === "/supersecretpagethatnoonewilleverfind" ? true : false
   );
-  const { approveFeedback, disapproveFeedback, deleteFeedback } =
+  const { approveFeedback, disapproveFeedback, deleteFeedback, editFeedback } =
     useContext(FeedbackContext);
+
   return (
     <Card>
       <div className="num-display">{item.rating}</div>
@@ -36,6 +37,11 @@ function FeedbackItem({ item }) {
       {display && (
         <button onClick={() => deleteFeedback(item.id)} className="close">
           <FaTimes color="gray" />
+        </button>
+      )}
+      {display && (
+        <button onClick={() => editFeedback(item)} className="edit">
+          <FaEdit color="gray" />
         </button>
       )}
       <div className="text-display">{item.text}</div>
