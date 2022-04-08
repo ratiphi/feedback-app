@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Card from "./shared/Card";
 import RatingSelect from "./RatingSelect";
 import Button from "./shared/Button";
@@ -9,6 +10,11 @@ function FeedbackForm() {
   const [rating, setRating] = useState(10);
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState("");
+  const location = useLocation();
+  const path = location.pathname;
+  const [display] = useState(
+    path !== "/supersecretpagethatnoonewilleverfind" ? true : false
+  );
 
   const { addFeedback, feedbackEdit, updateFeedback } =
     useContext(FeedbackContext);
@@ -52,9 +58,13 @@ function FeedbackForm() {
         addFeedback(newFeedback);
       }
 
-      window.alert(
-        "Thank you for submitting feedback! It will be displayed once approved by an administrator."
-      );
+      // eslint-disable-next-line no-lone-blocks
+      {
+        display &&
+          window.alert(
+            "Thank you for submitting feedback! It will be displayed once approved by an administrator."
+          );
+      }
       setText("");
     }
   };

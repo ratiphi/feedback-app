@@ -149,17 +149,19 @@ input:focus {
 }
 
 .approve {
+  top: 9px;
   right: 60px;
 }
 
 .disapprove {
+  top: 12px;
   right: 40px;
 }
 
 .approve-text {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 6px;
+  right: 110px;
   background: none;
   border: none;
   font-size: 14px;
@@ -205,22 +207,36 @@ input:focus {
   color: rebeccapurple;
 }
 
-/* FIX: Remove position: absolute to keep about icon at the bottom of the
- * document */
 .about-link {
   display: flex;
   justify-content: flex-end;
 }
 
-/* FIX: Remove position: absolute to keep about icon at the bottom of the
- * document */
 .about-link a {
   color: #fff;
   cursor: pointer;
 }
 
 .about-link a:hover {
-  color: #789395;
+  color: #f1d00a;
+}
+
+.home-link a {
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.home-link a:hover {
+  color: #f1d00a;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .about h1 {

@@ -7,6 +7,7 @@ import FeedbackForm from "./components/FeedbackForm";
 //import FeedbackData from "./data/FeedbackData";
 import AboutIconLink from "./components/AboutIconLink";
 import AboutPage from "./pages/AboutPage";
+import AdminHeader from "./components/AdminHeader";
 import NotFound from "./pages/NotFound";
 import { FeedbackProvider } from "./context/FeedbackContext";
 
@@ -34,7 +35,7 @@ function App() {
               path="/supersecretpagethatnoonewilleverfind"
               element={
                 <>
-                  <h3>Admin Console</h3>
+                  <AdminHeader />
                   <FeedbackForm />
                   <FeedbackStats />
                   <FeedbackList />
